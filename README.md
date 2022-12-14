@@ -55,7 +55,8 @@ function cleanProblemStatement(className){
         el.style.lineSpace = 'absolute';
     });
 
-    window.print();
+    // window.print();
+
     // print();
 
 }
