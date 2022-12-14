@@ -8,6 +8,7 @@ Simple JS script that make codeforces problem page clean &amp; space optimize us
 - Install [Tamper Monkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en) browser extension.
 - Create a new script in Tamper Monkey & Paste this Code.
   
+use by **Ctrl+P**
   ```// @name         Codeforce Problem Clean
   // @namespace    http://tampermonkey.net/
   // @version      0.1
