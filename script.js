@@ -1,9 +1,10 @@
+// ==UserScript==
 // @name         Codeforce Problem Clean
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  Help you to print complete problemset from CodeForces with only 1 column
 // @author       Akhilesh Kumar Sharma
-// @match        https://codeforces.com/problemset/*
+// @match        https://codeforces.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=codeforces.com
 // @grant        none
 // @license MIT 
@@ -19,7 +20,7 @@ function removeElementsByClass(className){
 
 function cleanProblemStatement(className){
 
-    const ids = ["sidebar", "footer", "header"];
+     const ids = ["sidebar", "footer", "header"];
      const classNames = ["second-level-menu", "roundbox menu-box",
                          "property-title", "time-limit", "alert alert-info diff-notifier",
                          "memory-limit", "input-file", "output-file"]
@@ -41,6 +42,10 @@ function cleanProblemStatement(className){
         el.style.lineSpace = 'absolute';
     });
 
+    // window.print();
+
+    // print();
+
 }
 
 
@@ -50,7 +55,7 @@ function cleanProblemStatement(className){
 
     // Using ctrl+P
     document.addEventListener('keydown', function(event) {
-        if (event.code == 'KeyP' && (event.ctrlKey || event.commandKey)) {
+        if (event.code == 'KeyP' && (event.ctrlKey || event.metaKey)) {
             cleanProblemStatement();
         }
     });
