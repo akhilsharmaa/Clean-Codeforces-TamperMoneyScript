@@ -1,4 +1,4 @@
-# Clean-Codeforces
+## Clean-Codeforces **(using Ctrl+P)**
 Simple JS script that make codeforces problem page clean &amp; space optimize using Tampermonkey browser extension.
 ![BefvsAft](https://user-images.githubusercontent.com/74103314/207593287-bb75ecfd-7961-4423-a6cc-f9ab32117c84.png)
 
