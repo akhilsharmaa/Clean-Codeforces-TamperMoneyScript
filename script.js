@@ -10,6 +10,26 @@
 // @license MIT 
 // ==/UserScript==
 
+function addGlobalStyle(css) {
+    // Copy from: https://stackoverflow.com/a/46285637
+    var head, style;
+    head = document.getElementsByTagName('head')[0];
+    if (!head) { return; }
+    style = document.createElement('style');
+    style.type = 'text/css';
+    style.innerHTML = css.replace(/;/g, ' !important;');
+    head.appendChild(style);
+}
+
+function watermark(){
+    var pageUrl = "URL : " + window.location.href.substring(8);;
+    const node = document.createElement("p");
+    node.style.textAlign = "end";
+    node.style.color ="#a5a5a5";
+    const textnode = document.createTextNode(pageUrl);
+    node.appendChild(textnode);
+    document.getElementsByClassName("note")[0].appendChild(node);
+}
 
 function removeElementsByClass(className){
     const elements = document.getElementsByClassName(className);
@@ -23,7 +43,7 @@ function cleanProblemStatement(className){
      const ids = ["sidebar", "footer", "header"];
      const classNames = ["second-level-menu", "roundbox menu-box",
                          "property-title", "time-limit", "alert alert-info diff-notifier",
-                         "memory-limit", "input-file", "output-file"]
+                         "memory-limit", "input-file", "output-file", "button-up"]
 
      // REMOVE ALL THE IDS AND CLASS
      ids.forEach(ele =>{ document.getElementById(ele).remove();});
@@ -42,9 +62,18 @@ function cleanProblemStatement(className){
         el.style.lineSpace = 'absolute';
     });
 
-    // window.print();
+    var body = document.getElementById("pageContent");
+    body.style.padding = "0px";
+    body.style.margin = "0px";
 
-    // print();
+    // Left shift the title
+    document.querySelectorAll('.problem-statement .header').forEach(function(el) {
+        el.style.textAlign = 'left';
+    });
+
+    const testElement =document.querySelectorAll('.header .title').forEach(function(el) {
+        el.style.fontSize ="xx-large";
+    });
 
 }
 
@@ -52,12 +81,18 @@ function cleanProblemStatement(className){
 (function() {
 
     'use strict';
-
     // Using ctrl+P
     document.addEventListener('keydown', function(event) {
         if (event.code == 'KeyP' && (event.ctrlKey || event.metaKey)) {
+
+            // CLEAN the page
             cleanProblemStatement();
+            // watermark();
+
         }
     });
-     
+
+    addGlobalStyle('.compact-problemset .problem-frames { column-count: 1; }');
+
+
 })();
