@@ -38,7 +38,7 @@ function removeElementsByClass(className){
     }
 }
 
-function cleanProblemStatement(className){
+function cleanProblemStatement(){
 
      const ids = ["sidebar", "footer", "header"];
      const classNames = ["second-level-menu", "roundbox menu-box",
@@ -46,16 +46,12 @@ function cleanProblemStatement(className){
                          "memory-limit", "input-file", "output-file", "button-up"]
 
      // REMOVE ALL THE IDS AND CLASS
-     ids.forEach(ele =>{ document.getElementById(ele).remove();});
+     ids.forEach(ele =>{document.getElementById(ele).remove();});
      classNames.forEach(ele =>{removeElementsByClass(ele); });
 
      //
     document.querySelectorAll('.problemindexholder').forEach(function(el) {
         el.style.position = 'absolute';
-    });
-
-    document.querySelectorAll(".sample-test").forEach(function(el) {
-        el.style.backgroundColor = '#fff';
     });
 
     document.querySelectorAll('.title').forEach(function(el) {
@@ -71,12 +67,28 @@ function cleanProblemStatement(className){
         el.style.textAlign = 'left';
     });
 
+    document.getElementsByClassName("ttypography")[0].style.margin = "0px";
+
     const testElement =document.querySelectorAll('.header .title').forEach(function(el) {
-        el.style.fontSize ="xx-large";
+        el.style.fontSize ="24px";
     });
 
 }
 
+function addContestName(){
+
+    const sidebar = document.getElementsByClassName("left");
+    const text = sidebar[0].textContent;
+
+    const el = document.createElement('p');
+    el.textContent = text;
+    el.style.fontSize ="18px";
+    el.style.paddingTop ="4px";
+    el.style.fontFamily = "Times New Roman ,sans-serif";
+
+    const box = document.getElementsByClassName("title")[0];
+    box.appendChild(el);
+}
 
 (function() {
 
@@ -85,10 +97,11 @@ function cleanProblemStatement(className){
     document.addEventListener('keydown', function(event) {
         if (event.code == 'KeyP' && (event.ctrlKey || event.metaKey)) {
 
+
+            addContestName();
+
             // CLEAN the page
             cleanProblemStatement();
-            // watermark();
-
         }
     });
 
@@ -96,3 +109,7 @@ function cleanProblemStatement(className){
 
 
 })();
+
+
+
+
