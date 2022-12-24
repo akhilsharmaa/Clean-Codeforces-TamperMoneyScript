@@ -67,7 +67,7 @@ function cleanProblemStatement(){
         el.style.textAlign = 'left';
     });
 
-    document.getElementsByClassName("ttypography")[0].style.margin = "0px";
+    document.getElementsByClassName("ttypography")[0].style.marginBottom = "0px";
 
     const testElement =document.querySelectorAll('.header .title').forEach(function(el) {
         el.style.fontSize ="24px";
@@ -80,10 +80,16 @@ function addContestName(){
     const sidebar = document.getElementsByClassName("left");
     const text = sidebar[0].textContent;
 
+    if(text=="Name"){
+        return;
+    }
+
     const el = document.createElement('p');
     el.textContent = text;
-    el.style.fontSize ="18px";
-    el.style.paddingTop ="4px";
+    el.style.fontSize ="16px";
+    el.style.paddingTop ="2px";
+    el.style.fontStyle = "italic";
+
     el.style.fontFamily = "Times New Roman ,sans-serif";
 
     const box = document.getElementsByClassName("title")[0];
@@ -109,6 +115,8 @@ function addContestName(){
 
 
 })();
+
+
 
 
 
